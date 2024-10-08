@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Định Dạng</title>
+    <style>
+        .container {
+            width: 300px;
+            border: 1px solid black;
+            padding: 10px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .content {
+            margin-top: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>FORM ĐỊNH DẠNG</h3>
+        <form id="formatForm">
+            <label for="name">Họ và tên</label><br>
+            <input type="text" id="name"><br><br>
+            <label>Chọn</label>
+            <input type="radio" id="background" name="option" value="background" checked> Background
+            <input type="radio" id="font" name="option" value="font"> Font<br><br>
+            <label for="color">Chọn màu</label>
+            <select id="color">
+                <option value="">Chọn màu ...</option>
+                <option value="red">Đỏ</option>
+                <option value="blue">Xanh</option>
+                <option value="green">Lục</option>
+            </select><br><br>
+            <button type="button" onclick="doiMau()">Đổi màu</button>
+            <button type="button" onclick="huy()">Cancel</button>
+        </form>
+        <div class="content" id="content">
+            you can direct link the hyperlink with the file if you know the address but this is limited by the browser. eg. if pdf reader is installed on the client then the pdf will not be downloaded instead it will be shown. A good solution would be to have a seperate page for downloading files. just pass filename in querystring and in the pageload event just output the file in response stream.This way you can use url say dwnld.aspx?filename.ext
+        </div>
+    </div>
+
+    <script>
+        function doiMau() {
+            var selectedColor = document.getElementById('color').value;
+            var content = document.getElementById('content');
+            var option = document.querySelector('input[name="option"]:checked').value;
+
+            if (selectedColor === "") {
+                alert("Vui lòng chọn màu!");
+                return;
+            }
+
+            if (option === "background") {
+                content.style.backgroundColor = selectedColor;
+            } else if (option === "font") {
+                content.style.color = selectedColor;
+            }
+        }
+
+        function huy() {
+            document.getElementById('content').style.backgroundColor = "";
+            document.getElementById('content').style.color = "";
+        }
+    </script>
+</body>
+</html>

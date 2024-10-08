@@ -1,0 +1,46 @@
+<html>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chọn Loại Cafe</title>
+    <style>
+        .container {
+            width: 200px;
+            border: 1px solid black;
+            padding: 10px;
+            margin: 20px;
+        }
+        .result {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="cafeForm">
+            <p>Chọn loại cafe:</p>
+            <input type="checkbox" id="trungnguyen" name="cafe" value="Trung Nguyen" checked> Trung Nguyen<br>
+            <input type="checkbox" id="mekong" name="cafe" value="Me Kong"> Me Kong<br>
+            <input type="checkbox" id="newlife" name="cafe" value="New Life" checked> New Life<br>
+            <input type="checkbox" id="oceanblue" name="cafe" value="Ocean Blue" checked> Ocean Blue<br>
+            <input type="checkbox" id="bluespace" name="cafe" value="Blue Space"> Blue Space<br>
+            <input type="checkbox" id="windows" name="cafe" value="Windows"> Windows<br><br>
+            <button type="button" onclick="chonCafe()">Chọn</button>
+        </form>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function chonCafe() {
+            var checkboxes = document.querySelectorAll('input[name="cafe"]:checked');
+            var selected = [];
+            checkboxes.forEach((checkbox) => {
+                selected.push(checkbox.value);
+            });
+            document.getElementById('result').innerHTML = "Bạn chọn cafe: " + selected.join(', ');
+        }
+    </script>
+</body>
+</html>

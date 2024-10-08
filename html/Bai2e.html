@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Slideshow Hình Ảnh</title>
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        img {
+            width: 300px;
+            height: auto;
+            border: 1px solid black;
+        }
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="slideshow" src="../img/b1.jpg" alt="Slideshow">
+        <br>
+        <button onclick="playSlideshow()">Play</button>
+        <button onclick="stopSlideshow()">Stop</button>
+    </div>
+
+    <script>
+        var images = ["../img/b1.jpg", "../img/b2.jpg", "../img/b3.jpg", "../img/b4.jpg", "../img/b5.jpg", "../img/b6.jpg", "../img/b7.jpg", "../img/b8.jpg", "../img/b9.jpg", "../img/b10.jpg"];
+        var index = 0;
+        var interval;
+
+        function playSlideshow() {
+            if (!interval) {
+                interval = setInterval(() => {
+                    index = (index + 1) % images.length;
+                    document.getElementById('slideshow').src = images[index];
+                }, 1000);
+            }
+        }
+
+        function stopSlideshow() {
+            clearInterval(interval);
+            interval = null;
+        }
+    </script>
+</body>
+</html>

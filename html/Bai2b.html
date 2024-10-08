@@ -1,0 +1,85 @@
+<html>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Phép Tính Cơ Bản</title>
+    <style>
+        form {
+            width: 300px;
+            margin: 50px auto;
+            border: 1px solid black;
+            padding: 20px;
+            text-align: center;
+        }
+        h2 {
+            background-color: pink;
+            padding: 10px;
+        }
+        input[type="text"] {
+            width: 80%;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <form>
+        <h2>PHÉP TÍNH CƠ BẢN</h2>
+        <label for="so1">Nhập số thứ 1</label><br>
+        <input type="text" id="so1" required ><br> 
+        <label for="so2">Nhập số thứ 2</label><br>
+        <input type="text" id="so2" required><br>
+        <button type="button" onclick="tinhToan('+')">Cộng</button>
+        <button type="button" onclick="tinhToan('-')">Trừ</button>
+        <button type="button" onclick="tinhToan('*')">Nhân</button>
+        <button type="button" onclick="tinhToan('/')">Chia</button>
+        <button type="button" onclick="tinhToan('%')">Chia dư</button><br>
+        <label for="ketqua">Kết quả</label><br>
+        <input type="text" id="ketqua" readonly>
+    </form>
+
+    <script>
+        function tinhToan(phepToan) {
+            var so1 = parseFloat(document.getElementById('so1').value);
+            var so2 = parseFloat(document.getElementById('so2').value);
+            var ketqua;
+
+            if (isNaN(so1) || isNaN(so2)) {
+                alert("Vui lòng nhập số hợp lệ!");
+                return;
+            }
+
+            switch (phepToan) {
+                case '+':
+                    ketqua = so1 + so2;
+                    break;
+                case '-':
+                    ketqua = so1 - so2;
+                    break;
+                case '*':
+                    ketqua = so1 * so2;
+                    break;
+                case '/':
+                    if (so2 === 0) {
+                        alert("Không thể chia cho 0!");
+                        return;
+                    }
+                    ketqua = so1 / so2;
+                    break;
+                case '%':
+                    if (so2 === 0) {
+                        alert("Không thể chia cho 0!");
+                        return;
+                    }
+                    ketqua = so1 % so2;
+                    break;
+                default:
+                    ketqua = "Lỗi!";
+            }
+
+            document.getElementById('ketqua').value = ketqua;
+        }
+    </script>
+</body>
+</html>
